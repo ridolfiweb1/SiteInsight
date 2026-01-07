@@ -170,7 +170,18 @@ const App: React.FC = () => {
            <span className="font-medium tracking-widest uppercase">Tecnologia Insight Engine</span>
            <div className="h-px w-8 bg-slate-200" />
         </div>
-        <p>&copy; {new Date().getFullYear()} SiteInsight • Desenvolvido com Gemini AI</p>
+        <p>
+          &copy; {new Date().getFullYear()} SiteInsight • Desenvolvido por{' '}
+          <a 
+            href="https://ridolfiweb.com.br" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-indigo-400 hover:text-indigo-600 transition-colors font-semibold underline underline-offset-2"
+          >
+            RidolfiWEB
+          </a>{' '}
+          com Gemini AI
+        </p>
       </footer>
     </div>
   );
