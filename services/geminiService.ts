@@ -1,9 +1,16 @@
 
 import { GoogleGenAI, Type } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// A chave será substituída pelo Vite durante o build
+const apiKey = process.env.API_KEY || "";
 
 export const summarizeWebsite = async (url: string) => {
+  if (!apiKey) {
+    throw new Error("API_KEY não configurada no ambiente do Vercel.");
+  }
+  
+  const ai = new GoogleGenAI({ apiKey });
+
   try {
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
@@ -33,7 +40,6 @@ export const summarizeWebsite = async (url: string) => {
       },
     });
 
-    // Extract the text which is already in JSON format due to responseMimeType
     const text = response.text;
     if (!text) throw new Error("A IA não retornou uma resposta válida.");
     
